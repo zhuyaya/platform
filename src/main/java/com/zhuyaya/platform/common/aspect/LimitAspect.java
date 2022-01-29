@@ -1,7 +1,7 @@
 package com.zhuyaya.platform.common.aspect;
 
 import com.google.common.collect.ImmutableList;
-import com.zhuyaya.platform.common.LimitAccessException;
+import com.zhuyaya.platform.common.exception.LimitAccessException;
 import com.zhuyaya.platform.common.annotation.Limit;
 import com.zhuyaya.platform.common.entity.LimitType;
 import com.zhuyaya.platform.common.utils.IPUtil;

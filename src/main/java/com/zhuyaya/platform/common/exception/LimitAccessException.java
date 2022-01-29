@@ -1,4 +1,4 @@
-package com.zhuyaya.platform.common;
+package com.zhuyaya.platform.common.exception;
 
 /**
  * 限流异常
