@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.zhuyaya.platform.common.exception.LimitAccessException;
 import com.zhuyaya.platform.common.annotation.Limit;
 import com.zhuyaya.platform.common.entity.LimitType;
+import com.zhuyaya.platform.common.utils.HttpContextUtil;
 import com.zhuyaya.platform.common.utils.IPUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -50,7 +51,7 @@ public class LimitAspect {
 
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
-        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+        HttpServletRequest request = HttpContextUtil.getHttpServletRequest();
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
         Limit limitAnnotation = method.getAnnotation(Limit.class);

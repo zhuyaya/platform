@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    dynamic:
+      # 是否开启 SQL 日志输出， 生产环境关闭
+      p6spy: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: PlatformHikariCP
+      primary: base
+      datasource:
+        # 数据源-1 base 主要存储基础数据
+        base:
+          username: root
+          password: root1234
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3307/platform_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+        # 数据源-2 quartz 定时任务框架
+        quartz:
+          username: root
+          password: root1234
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3307/platform_quartz?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+
+  redis:
+    # Redis 数据库索引（默认为0）
+    database: 0
+    # Redis 服务器地址
+    host: 127.0.0.1
+    # Redis 服务器连接端口
+    port: 6379
+    # Redis 密码
+    password:
+    jedis:
+      pool:
+        # 连接池中的最小空闲连接
+        min-idle: 8
+        # 连接池中的最大空闲连接
+        max-idle: 500
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 2000
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: 10000
+    # 连接超时时间
+    timeout: 0

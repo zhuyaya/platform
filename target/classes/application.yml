@@ -1,1 +1,42 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+    basedir: log/tomcat
+    accesslog:
+      enabled: true
+      directory: "logs"
+      encoding: utf-8
+      file-date-format: _yyyy-MM-dd
+      locale: zh_CN
+      max-days: 30
+      prefix: "tomcat_access_log"
+      suffix: ".log"
+      pattern: "[${spring.application.name}] =====> 请求时间-%t 客户端IP-%a 客户端Host-%h
+      客户端协议-%H 现成名称-%I SessionId-%S 请求URL-%U 请求方法-%m 请求状态码-%s 耗时(ms)-%D 连接状态-%x"
+  shutdown: graceful
 
+spring:
+  profiles:
+    active: dev
+
+  thymeleaf:
+    cache: false
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  aop:
+    proxy-target-class: true
+
+mybatis-plus:
+  # 实体类扫描路径
+  type-aliases-package: com.zhuyaya.platform.system.entity,com.zhuyaya.platform.generator.entity,com.zhuyaya.platform.job.entity,com.zhuyaya.platform.monitor.entity
+  # XML 扫描路径
+  mapper-locations: classpath:mapper/*/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    # 关闭 mybatis-plus 的 banner
+    banner: false
