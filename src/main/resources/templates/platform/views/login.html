@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <title>platform 系统 登录页</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+        <link rel="stylesheet" th:href="@{/static/platform/css/platform.css}" media="all">
+        <link rel="stylesheet" th:href="@{/static/platform/css/login.css}" media="all">
+        <link rel="icon" th:href="@{/static/platform/images/favicon.ico}" type="image/x-icon">
+    </head>
+    <body>
+        <div id="platform-login" lay-title="登录">
+            <div class="login-wrap">
+                <div class="layui-container">
+                    <div class="layui-row">
+                        <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4 platform-tc">
+                            <div class="layui-logo"><span><b>platform</b>权限系统</span></div>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4" id="login-div">
+                            <div class="login-form" lay-filter="login-form">
+                                <div class="layui-admin layui-admin-upbit">
+                                    <ul class="login-type-tab">
+                                        <li class="active">系统登录</li>
+                                    </ul>
+                                    <div class="normal-login-form">
+                                        <div class="layui-form-item">
+                                            <label for="username"
+                                                   class="layui-icon label-icon layui-icon-username"></label>
+                                            <input type="text" id="username" name="username" lay-verify="required"
+                                                   placeholder="用户名" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-item password-block">
+                                            <label for="password" class="layui-icon label-icon layui-icon-password"></label>
+                                            <input type="password" name="password" id="password" lay-verify="required"
+                                                   placeholder="密码" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <div class="layui-row">
+                                                <div class="layui-col-xs7">
+                                                    <label for="verifyCode" class="layui-icon label-icon layui-icon-vercode"></label>
+                                                    <input type="text" name="verifyCode" id="verifyCode" lay-verify="required"
+                                                           placeholder="验证码" class="layui-input" autocomplete="off">
+                                                </div>
+                                                <div class="layui-col-xs5">
+                                                    <img src="" alt="加载失败，请重试" class="code-img" id="codeImg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <input type="checkbox" name="rememberMe" title="记住我" lay-skin="primary" />
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <button class="layui-btn layui-btn-normal layui-btn-fluid" lay-submit
+                                                    lay-filter="login-submit" id="login">
+                                                <i style="display: none"
+                                                   class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                                立即登录
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item platform-tr">
+                                        <a id="register-href">注册账号</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-xs12 layui-col-lg4 layui-col-lg-offset4 platform-hide" id="register-div">
+                            <div class="layui-form" lay-filter="register-form">
+                                <div class="layui-anim layui-anim-upbit">
+                                    <ul class="login-type-tab">
+                                        <li class="active">账号注册</li>
+                                    </ul>
+                                    <div class="normal-login-form">
+                                        <div class="layui-form-item">
+                                            <label for="user-name-label" class="layui-icon label-icon layui-icon-username"></label>
+                                            <input type="text" name="username" id="user-name-label" minlength="2" maxlength="10"
+                                                   lay-verify="range" placeholder="用户名" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-item password-block">
+                                            <label for="password-label" class="layui-icon label-icon layui-icon-password"></label>
+                                            <input type="password" name="password" id="password-label" minlength="6" lay-verify="range"
+                                                   placeholder="密码" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-item password-block">
+                                            <label for="passwordB" class="layui-icon label-icon layui-icon-password"></label>
+                                            <input type="password" name="passwordB" id="passwordB" lay-verify="required"
+                                                   placeholder="密码确认" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <button class="layui-btn layui-btn-normal layui-btn-fluid" lay-submit
+                                                    lay-filter="register-submit" id="register">
+                                                <i style="display: none;" class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>
+                                                立即注册
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item platform-tr">
+                                    <a id="login-href">已有账号?马上登录</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

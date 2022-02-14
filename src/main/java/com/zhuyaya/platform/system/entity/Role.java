@@ -15,43 +15,41 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @description: 部门信息表
- * @author: zhuyaya
- * @date: 2021/12/20 10:06 下午
+ * 角色信息
+ *
+ * @author zhengfeizhu
+ * @version 1.0
+ * @date 2022-02-08 11:00
  */
 @Data
-@TableName("t_dept")
-@Excel("部门信息表")
-public class Dept implements Serializable {
+@TableName("t_role")
+@Excel("角色信息表")
+public class Role implements Serializable {
 
-    private static final long serialVersionUID = 587308216652400448L;
-
-    /**
-     * 部门ID
-     */
-    @TableId(value = "DEPT_ID", type = IdType.AUTO)
-    private Long deptId;
+    private static final long serialVersionUID = 3448256568775650055L;
 
     /**
-     * 上级部门ID
+     * 角色ID
      */
-    @TableField("PARENT_ID")
-    private Long parentId;
+    @TableId(value = "ROLE_ID", type = IdType.AUTO)
+    private Long roleId;
 
     /**
-     * 部门名称
+     * 角色名称
      */
-    @TableField("DEPT_NAME")
+    @TableField("ROLE_NAME")
+    @ExcelField(value = "角色名称")
     @NotBlank(message = "{required}")
     @Size(max = 10, message = "{noMoreThan}")
-    @ExcelField(value = "部门名称")
-    private String deptName;
+    private String roleName;
 
     /**
-     * 排序
+     * 角色描述
      */
-    @TableField("ORDER_NUM")
-    private Long orderNum;
+    @TableField("REMARK")
+    @ExcelField(value = "角色描述")
+    @Size(max = 50, message = "{noMoreThan}")
+    private String remark;
 
     /**
      * 创建时间
@@ -66,4 +64,9 @@ public class Dept implements Serializable {
     @TableField("MODIFY_TIME")
     @ExcelField(value = "修改时间", writeConverter = TimeConverter.class)
     private Date modifyTime;
+
+    /**
+     * 角色对应的菜单（按钮）id
+     */
+    private transient String menuIds;
 }

@@ -1,8 +1,11 @@
 package com.zhuyaya.platform.common.utils;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
+import com.zhuyaya.platform.common.entity.PlatformConstant;
+import com.zhuyaya.platform.system.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
@@ -83,5 +86,13 @@ public class PlatformUtil {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(value);
         return matcher.matches();
+    }
+
+    public static User getCurrentUser() {
+        return (User) SecurityUtils.getSubject().getPrincipal();
+    }
+
+    public static String view(String viewName) {
+        return PlatformConstant.VIEW_PREFIX + viewName;
     }
 }
